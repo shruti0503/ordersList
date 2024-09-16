@@ -21,7 +21,8 @@
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
     "node": "^22.8.0",
-    "prisma": "^5.19.1"
+    "prisma": "^5.19.1",
+    "tsc": "^2.0.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

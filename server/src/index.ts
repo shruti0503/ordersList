@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import cors from "cors"
 import helmet from "helmet";
-import orderRoutes from '../routes/orderRoutes'
+import orderRoutes from './routes/orderRoutes'
 import morgan from "morgan";
 
 
