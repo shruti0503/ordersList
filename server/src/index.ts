@@ -18,7 +18,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use('/orders', orderRoutes);
-
+app.use("/", (req, res) => {
+  res.json({ message: "This is backend" });
+});
 
 const port = Number(process.env.PORT) || 4001;
 app.listen(port, "0.0.0.0", () => {

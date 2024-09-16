@@ -19,6 +19,9 @@ app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
 app.use('/orders', orderRoutes_1.default);
+app.use("/", (req, res) => {
+    res.json({ message: "This is backend" });
+});
 const port = Number(process.env.PORT) || 4001;
 app.listen(port, "0.0.0.0", () => {
     console.log(`Server running on port ${port}`);
