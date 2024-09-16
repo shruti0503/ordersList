@@ -18,6 +18,7 @@ const OrdersList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  
   const itemsPerPage = 10;
 
 
@@ -50,6 +51,15 @@ const OrdersList = () => {
     }
   };
 
+  function setColor(status:string){
+    if(status==="Delivered") return "bg-green-200";
+    if(status==="Processing") return "bg-yellow-200";
+    if(status==="Shipped") return "bg-blue-200";
+    if(status==="Cancelled") return "bg-red-200";
+    return "";
+
+  }
+
   return (
     <div className="orders-list h-screen w-full px-10 gap-5 flex flex-col items-center bg-gray-50 text-black p-4">
       <h1 className="text-2xl font-bold mb-4">Orders List</h1>
@@ -60,19 +70,23 @@ const OrdersList = () => {
         <>
         <div className='flex border rounded-t-3xl w-full flex-col'>
           <Table className="w-full mb-4 border rounded-t-3xl">
-              <TableHeader className='bg-green-200  rounded-t-3xl'>
-                <TableRow>
-                  <TableHead>Order ID</TableHead>
-                  <TableHead>Customer Name</TableHead>
-                  <TableHead>Status</TableHead>
+              <TableHeader className='  rounded-t-3xl'>
+                <TableRow className='justify-center'>
+                  <TableHead><div className='flex justify-center'><p>Order ID</p></div></TableHead>
+                  <TableHead><div className='flex justify-center'><p>Customer Name</p></div></TableHead>
+                  <TableHead><div className='flex justify-center'><p>Status</p></div></TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {orders.map((order: any) => (
                   <TableRow key={order.orderId}>
-                    <TableCell>{order.orderId}</TableCell>
-                    <TableCell>{order.customerName}</TableCell>
-                    <TableCell>{order.status}</TableCell>
+                    <TableCell><div className='flex justify-center'><p>{order.orderId}</p></div></TableCell>
+                    <TableCell><div className='flex justify-center'><p>{order.customerName}</p></div></TableCell>
+                    <TableCell>
+                      <div className='flex justify-center'>
+                        <p className={`${setColor(order.status)} p-1 px-2 rounded-xl `}>{order.status}</p>
+                      </div>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -82,7 +96,7 @@ const OrdersList = () => {
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               variant="outline"
-              className="mr-2"
+              className="mr-2 rounded-xl"
             >
               Previous
             </Button>
@@ -93,7 +107,7 @@ const OrdersList = () => {
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               variant="outline"
-              className="ml-2"
+              className="ml-2 rounded-xl"
             >
               Next
             </Button>
