@@ -91,7 +91,7 @@ const OrdersList = () => {
                 ))}
               </TableBody>
           </Table>
-          <div className="pagination flex justify-between items-center w-full">
+          <div className="pagination flex justify-between items-center w-full rounded-b-3xl rounded-3xl px-2 pb-2">
             <Button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}

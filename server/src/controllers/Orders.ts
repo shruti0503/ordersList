@@ -1,11 +1,9 @@
-//@ts-nocheck
+
 import { Request } from "express"
 import { Response } from "express"
 import { PrismaClient } from "@prisma/client"
 
 const  prisma = new PrismaClient();
-
-
 
 export const getOrders = async (req: Request, res: Response) => {
   
@@ -22,11 +20,11 @@ export const getOrders = async (req: Request, res: Response) => {
     
     let count = 0;
     if (totalCount !== '0') {
-      count = await prisma.Orders.count();
+      count = await prisma.orders.count();
     }
 
    
-    const orders = await prisma.Orders.findMany({
+    const orders = await prisma.orders.findMany({
       skip,
       take: limitNumber,
       orderBy: { id: "desc" },
