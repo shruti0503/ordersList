@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^5.19.1",
+    "@vercel/postgres": "^0.10.0",
     "body-parser": "^1.20.3",
     "concurrently": "^9.0.1",
     "cors": "^2.8.5",
